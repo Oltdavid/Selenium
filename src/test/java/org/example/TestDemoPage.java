@@ -8,7 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-// create page factory
+
 public class TestDemoPage {
 
     private WebDriver driver;
@@ -35,7 +35,7 @@ public class TestDemoPage {
 
     @Test(priority = 2)
     public void testLoginWithoutUsernameAndPassword() {
-        demoPage.clickLogInButton();
+        demoPage.clickLoginButton();
         String errorMessage = demoPage.getErrorMessage();
         Assert.assertEquals(errorMessage, "Invalid Username");
     }
@@ -44,7 +44,7 @@ public class TestDemoPage {
     public void testLoginWithInvalidPassword() {
         demoPage.clickUsernameDropdown();
         demoPage.pressEnter();
-        demoPage.clickLogInButton();
+        demoPage.clickLoginButton();
         String errorMessage = demoPage.getErrorMessage();
         Assert.assertEquals(errorMessage, "Invalid Passworda");
     }
@@ -53,7 +53,7 @@ public class TestDemoPage {
     public void testLoginWithInvalidUsername() {
         demoPage.clickPasswordDropdown();
         demoPage.pressEnter();
-        demoPage.clickLogInButton();
+        demoPage.clickLoginButton();
         String errorMessage = demoPage.getErrorMessage();
         Assert.assertEquals(errorMessage, "Invalid Username");
     }
@@ -64,7 +64,7 @@ public class TestDemoPage {
         demoPage.pressEnter();
         demoPage.clickPasswordDropdown();
         demoPage.pressEnter();
-        demoPage.clickLogInButton();
+        demoPage.clickLoginButton();
         boolean isLogoutButtonDisplayed = demoPage.isLogoutButtonDisplayed();
         Assert.assertTrue(isLogoutButtonDisplayed, "The logout button is not displayed");
     }

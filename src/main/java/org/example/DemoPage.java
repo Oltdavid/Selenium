@@ -1,60 +1,70 @@
 package org.example;
-import java.util.List;
+
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-
-// refact=> "//*[@id=\"signin\"]");
-
-
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class DemoPage {
 
     private WebDriver driver;
     private Actions actions;
+
+    @FindBy(xpath = "//*[@id='signin']")
+    private WebElement signInButton;
+
+    @FindBy(xpath = "//*[@id='login-btn']")
+    private WebElement loginButton;
+
+    @FindBy(xpath = "//*[@id='username']/div/div[1]/div[1]")
+    private WebElement usernameDropdown;
+
+    @FindBy(xpath = "//*[@id='password']/div/div[1]/div[1]")
+    private WebElement passwordDropdown;
+
+    @FindBy(xpath = "//*[@id='username']/div/div[1]/div[1]")
+    private WebElement demoUser;
+
+    @FindBy(xpath = "//*[@id='logout']")
+    private WebElement logoutButton;
+
+    @FindBy(xpath = "//*[@id='__next']/div[2]/div/form/div[2]/h3")
+    private WebElement errorMessage;
+
     public DemoPage(WebDriver driver) {
         this.driver = driver;
         this.actions = new Actions(driver);
+        PageFactory.initElements(driver, this);
     }
 
     public void openPage() {
         driver.get("https://www.bstackdemo.com/");
     }
 
-    private By signInButton = By.xpath("//*[@id=\"signin\"]");
-    private By loginButton = By.xpath("//*[@id=\"login-btn\"]");
-    private By usernameDropdown = By.xpath("//*[@id=\"username\"]/div/div[1]/div[1]");
-
-    private By passwordDropdown = By.xpath("//*[@id=\"password\"]/div/div[1]/div[1]");
-
-    private By demoUser = By.xpath("//*[@id=\"username\"]/div/div[1]/div[1]");
-    private By logoutButton = By.xpath("//*[@id=\"logout\"]");
-
-
     public void clickOnSignInButton() {
-        driver.findElement(signInButton).click();
+        signInButton.click();
     }
 
-    public void clickLogInButton() {
-        driver.findElement(loginButton).click();
+    public void clickLoginButton() {
+        loginButton.click();
     }
 
     public void clickUsernameDropdown() {
-        driver.findElement(usernameDropdown).click();
+        usernameDropdown.click();
     }
 
     public void clickPasswordDropdown() {
-        driver.findElement(passwordDropdown).click();
+        passwordDropdown.click();
     }
 
     public void selectUser() {
-        driver.findElement(usernameDropdown).sendKeys("demouser");
+        usernameDropdown.sendKeys("demouser");
     }
 
     public String getErrorMessage() {
-        return driver.findElement(By.xpath("//*[@id=\"__next\"]/div[2]/div/form/div[2]/h3")).getText();
+        return errorMessage.getText();
     }
 
     public void pressEnter() {
@@ -62,10 +72,8 @@ public class DemoPage {
     }
 
     public boolean isLogoutButtonDisplayed() {
-        WebElement logoutButtonElement = driver.findElement(logoutButton);
-        return logoutButtonElement.isDisplayed();
+        return logoutButton.isDisplayed();
     }
-
 
     public String getTitle() {
         return driver.getTitle();
