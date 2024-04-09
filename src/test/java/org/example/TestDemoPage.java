@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 public class TestDemoPage {
 
-    private WebDriver driver;
+    public WebDriver driver;
     private DemoPage demoPage;
 
     @BeforeMethod
@@ -24,6 +24,7 @@ public class TestDemoPage {
         demoPage.openPage();
         demoPage.clickOnSignInButton();
     }
+
 
     @Test(priority = 1)
     public void testPageTitle() {
@@ -46,7 +47,7 @@ public class TestDemoPage {
         demoPage.pressEnter();
         demoPage.clickLoginButton();
         String errorMessage = demoPage.getErrorMessage();
-        Assert.assertEquals(errorMessage, "Invalid Passworda");
+        Assert.assertEquals(errorMessage, "Invalid Password");
     }
 
     @Test(priority = 4)
@@ -57,7 +58,6 @@ public class TestDemoPage {
         String errorMessage = demoPage.getErrorMessage();
         Assert.assertEquals(errorMessage, "Invalid Username");
     }
-//sel
     @Test(priority = 5)
     public void testLoginWithValidUsernamePassword() {
         demoPage.clickUsernameDropdown();
@@ -69,10 +69,10 @@ public class TestDemoPage {
         Assert.assertTrue(isLogoutButtonDisplayed, "The logout button is not displayed");
     }
 
-    @AfterMethod
+  /*  @AfterMethod
     public void tearDown() {
         if (driver != null) {
             driver.quit();
         }
-    }
+    }*/
 }

@@ -38,6 +38,9 @@ public class DemoPage {
         this.actions = new Actions(driver);
         PageFactory.initElements(driver, this);
     }
+    public WebDriver getDriver() {
+        return driver;
+    }
 
     public void openPage() {
         driver.get("https://www.bstackdemo.com/");

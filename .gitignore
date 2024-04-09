@@ -1,0 +1,8 @@
+allure-results/*
+surefire-reports/*
+*.log
+surefire-reports/
+*.bak
+*.swp
+.settings/
+test-output/
