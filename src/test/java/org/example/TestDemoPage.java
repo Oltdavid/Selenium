@@ -61,15 +61,15 @@ public class TestDemoPage {
     @Test(priority = 5)
     public void testLoginWithValidUsernamePassword() {
         demoPage.clickUsernameDropdown();
-        demoPage.pressEnter();
+        demoPage.Select_User1_demouser();
         demoPage.clickPasswordDropdown();
-        demoPage.pressEnter();
+        demoPage.clickPasswordValid();
         demoPage.clickLoginButton();
         boolean isLogoutButtonDisplayed = demoPage.isLogoutButtonDisplayed();
         Assert.assertTrue(isLogoutButtonDisplayed, "The logout button is not displayed");
     }
 
-  /*  @AfterMethod
+    /* @AfterMethod
     public void tearDown() {
         if (driver != null) {
             driver.quit();

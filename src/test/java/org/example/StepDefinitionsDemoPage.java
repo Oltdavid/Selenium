@@ -1,38 +1,17 @@
 package org.example;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import static org.junit.Assert.assertTrue;
 
-import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
 public class StepDefinitionsDemoPage {
 
     private DemoPage demoPage;
-    WebDriver driver;
-
-    @Before
-    public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "C://dev//files//chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        demoPage = new DemoPage(driver);
-    }
-
-    @After
-    public void tearDown() {
-        driver.quit();
-    }
 
     @Given("I have opened the browser and navigated to the StackDemo login page")
     public void i_have_opened_the_browser_and_navigated_to_the_StackDemo_login_page() {
+        demoPage = new DemoPage(Hooks.driver);
         demoPage.openPage();
         demoPage.clickOnSignInButton();
     }
@@ -58,5 +37,13 @@ public class StepDefinitionsDemoPage {
         assertTrue(errorMessage.contains(expectedErrorMessage));
     }
 
+    @When("I click on the password dropdown")
+    public void i_click_on_the_password_dropdown() {
+        demoPage.clickPasswordDropdown();;
+    }
 
+    @Then("the Logout button should be displayed")
+    public void the_Logout_button_should_be_displayed() {
+        assertTrue(demoPage.isLogoutButtonDisplayed());
+    }
 }
