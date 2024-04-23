@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
+
 
 public class DemoPage {
 
@@ -19,6 +19,10 @@ public class DemoPage {
 
     @FindBy(xpath = "//*[@id='login-btn']")
     private WebElement loginButton;
+
+    @FindBy(xpath = "//*[@id='logout']")
+    private WebElement logoutButton;
+
 
 
 
@@ -56,20 +60,20 @@ public class DemoPage {
     @FindBy(xpath = "//*[@id=\"react-select-2-option-0-4\"]")
     private WebElement User5_locked_user;
 
+    @FindBy(xpath = "//*[@id=\"__next\"]/div/div/div[1]/div/div/div[2]/span")
+    private WebElement currentUsername;
 
 
-
-    @FindBy(xpath = "//*[@id='logout']")
-    private WebElement logoutButton;
-
-    @FindBy(xpath = "//*[@id='__next']/div[2]/div/form/div[2]/h3")
+    @FindBy(xpath = "//*[@id=\"__next\"]/div[2]/div/form/div[2]/h3")
     private WebElement errorMessage;
+
 
     public DemoPage(WebDriver driver) {
         this.driver = driver;
         this.actions = new Actions(driver);
         PageFactory.initElements(driver, this);
     }
+
     public WebDriver getDriver() {
         return driver;
     }
@@ -86,10 +90,13 @@ public class DemoPage {
         loginButton.click();
     }
 
+    public void clickLogoutButton() {
+        logoutButton.click();
+    }
+
     public void clickUsernameDropdown() {
         usernameDropdown.click();
     }
-
 
 
 
@@ -101,7 +108,6 @@ public class DemoPage {
     public void clickPasswordValid() {
         SelectPassword.click();
     }
-
 
 
     public void Select_User1_demouser() {
@@ -139,6 +145,14 @@ public class DemoPage {
 
     public String getTitle() {
         return driver.getTitle();
+    }
+
+    public String getCurrentUsername() {
+        return currentUsername.getText();
+    }
+
+    public String getCurrentErrorMessage() {
+        return errorMessage.getText();
     }
 
 }

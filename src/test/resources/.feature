@@ -18,3 +18,4 @@ Feature: Test Demo Page
     And I press Enter
     And I click on the Login button
     Then the Logout button should be displayed
+
