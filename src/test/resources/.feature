@@ -19,3 +19,17 @@ Feature: Test Demo Page
     And I click on the Login button
     Then the Logout button should be displayed
 
+
+  Scenario Outline: Login with <user>
+    Given I am on the login page
+    When I login with username <user> and password <password>
+    Then The <expected_username> should be displayed
+
+    Examples:
+      | user                        | password       | expected_username             |
+      | User1_demouser              | testingisfun99 | demouser                      |
+      | User2_image_not_loading_user| testingisfun99 | image_not_loading_user        |
+      | User3_existing_orders_user  | testingisfun99 | existing_orders_user          |
+      | User4_fav_user              | testingisfun99 | fav_user                      |
+      | User5_existing_orders_user  | testingisfun99 | Your account has been locked. |
+

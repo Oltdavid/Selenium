@@ -46,4 +46,6 @@ public class StepDefinitionsDemoPage {
     public void the_Logout_button_should_be_displayed() {
         assertTrue(demoPage.isLogoutButtonDisplayed());
     }
+
+
 }
