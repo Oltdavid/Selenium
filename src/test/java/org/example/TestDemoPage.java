@@ -132,10 +132,10 @@ public class TestDemoPage {
     }
 
 
-     @AfterMethod
+   /*  @AfterMethod
     public void tearDown() {
         if (driver != null) {
             driver.quit();
         }
-    }
+    }*/
 }

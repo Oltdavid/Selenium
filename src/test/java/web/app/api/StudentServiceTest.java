@@ -40,10 +40,10 @@ public class StudentServiceTest {
     @Test
     public void testUpdateStudent(){
         int id = 1;
-        Student body = new Student("Hard", "Style","hs@mail.com");
+        Student body = new Student("John", "Doe","hs@mail.com");
         studentService.updateStudent(id, body).then().assertThat().statusCode(200).
-                body("firstName", equalTo("Hard")).
-                body("lastName", equalTo("Style")).
+                body("firstName", equalTo("John")).
+                body("lastName", equalTo("Doe")).
                 body("email", equalTo("hs@mail.com"));
     }
 

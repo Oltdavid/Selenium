@@ -1,5 +1,6 @@
 package org.example;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -66,6 +67,36 @@ public class DemoPage {
     @FindBy(xpath = "//*[@id=\"__next\"]/div[2]/div/form/div[2]/h3")
     private WebElement errorMessage;
 
+    @FindBy(xpath = "//*[@id=\"__next\"]/div/div/main/div[1]/div[4]/label/span")
+    private WebElement phoneVendorOnePlus;
+
+    @FindBy(xpath = "//*[@id=\"23\"]/div[4]")
+    private WebElement addToCartOnePlus7Button;
+
+    @FindBy(xpath = "//*[@id=\"__next\"]/div/div/div[2]/div[2]/div[2]/div/div[4]/p")
+    private WebElement cartPrice;
+
+
+    @FindBy(xpath = "//*[@id=\"__next\"]/div/div/div[2]/div[2]/div[3]/div[3]")
+    private WebElement checkOutButton;
+
+    @FindBy(xpath = "//*[@id=\"firstNameInput\"]")
+    private WebElement firstNameShippingAddress;
+
+    @FindBy(xpath = "//*[@id=\"lastNameInput\"]")
+    private WebElement lastNameShippingAddress;
+
+    @FindBy(xpath = "//*[@id=\"addressLine1Input\"]")
+    private WebElement addressShippingAddress;
+
+    @FindBy(xpath = "//*[@id=\"provinceInput\"]")
+    private WebElement stateShippingAddress;
+
+    @FindBy(xpath = "//*[@id=\"postCodeInput\"]")
+    private WebElement postalCodeShippingAddress;
+
+
+
 
     public DemoPage(WebDriver driver) {
         this.driver = driver;
@@ -97,7 +128,17 @@ public class DemoPage {
         usernameDropdown.click();
     }
 
+    public void clickAddToCartButtonOnePlus7T() {
+        addToCartOnePlus7Button.click();
+    }
 
+    public String getCartPrice() {
+        return cartPrice.getText();
+    }
+
+    public void clickOnePlusPhoneVendor() {
+        phoneVendorOnePlus.click();
+    }
 
 
     public void clickPasswordDropdown() {
@@ -108,6 +149,10 @@ public class DemoPage {
         SelectPassword.click();
     }
 
+
+    public void clickCheckoutButton() {
+        checkOutButton.click();
+    }
 
     public void Select_User1_demouser() {
         User1_demouser.click();
@@ -154,4 +199,34 @@ public class DemoPage {
         return errorMessage.getText();
     }
 
+    public void selectUsername(String username) {
+        usernameDropdown.click();
+        driver.findElement(By.xpath(String.format("//*[@id=\"react-select-2-option-0-%s\"]", username))).click();
+    }
+
+    public void selectPassword(String password) {
+        passwordDropdown.click();
+        driver.findElement(By.xpath(String.format("//*[@id=\"react-select-3-option-0-%s\"]", password))).click();
+    }
+
+    public void typeFirstNameShippingAddress(String firstName) {
+        firstNameShippingAddress.sendKeys(firstName);
+    }
+
+    public void typeLastNameShippingAddress(String lastName) {
+        lastNameShippingAddress.sendKeys(lastName);
+    }
+
+    public void typeAddressShippingAddress(String address) {
+        addressShippingAddress.sendKeys(address);
+    }
+
+    public void typeStateShippingAddress(String state) {
+        stateShippingAddress.sendKeys(state);
+    }
+
+    public void typePostalCodeShippingAddress(String postalCode) {
+        postalCodeShippingAddress.sendKeys(postalCode);
+    }
 }
+
