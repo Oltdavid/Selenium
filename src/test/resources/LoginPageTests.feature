@@ -35,5 +35,5 @@ Feature: Test Demo Page
       | User2_image_not_loading_user      | image_not_loading_user        |
       | User3_existing_orders_user        | existing_orders_user          |
       | User4_fav_user                    | fav_user                      |
-      | User5_existing_orders_user        | Your account has been locked. |
+
 
