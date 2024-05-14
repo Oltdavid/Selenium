@@ -7,8 +7,9 @@ import io.cucumber.java.en.When;
 
 
 import static org.junit.Assert.assertTrue;
+import static org.testng.AssertJUnit.assertEquals;
 
-    public class StepDefinitionsDemoPage {
+public class StepDefinitionsDemoPage {
         private DemoPage demoPage;
 
         public StepDefinitionsDemoPage() {
@@ -101,6 +102,58 @@ import static org.junit.Assert.assertTrue;
             demoPage.typeAddressShippingAddress(address);
             demoPage.typeStateShippingAddress(state);
             demoPage.typePostalCodeShippingAddress(postalCode);
+        }
+
+        @Then("The total checkout price should be {string}")
+        public void the_total_checkout_price_should_be(String expectedPrice) {
+            String actualPrice = demoPage.getTotalCheckoutPrice();
+            assertTrue(actualPrice.contains(expectedPrice));
+        }
+
+        @Then("I click on the submit button")
+        public void i_click_on_the_submit_button() {
+            demoPage.clickSubmitButton();
+        }
+
+        @Then("The confirmation message should be {string}")
+        public void the_total_confirmation_message_should_be(String expectedMessage) {
+            String actualMessage = demoPage.getConfirmationMessage();
+            assertTrue(actualMessage.contains(expectedMessage));
+        }
+
+        @Then("The total price should be {string}")
+        public void the_total_price_should_be(String expectedPrice) {
+            String actualPrice = demoPage.getTotalPrice();
+            assertTrue(actualPrice.contains(expectedPrice));
+        }
+
+        @When("I select the username {string}")
+        public void i_select_the_username(String user) {
+            switch(user) {
+                case "User1_demouser":
+                    demoPage.Select_User1_demouser();
+                    break;
+                case "User2_image_not_loading_user":
+                    demoPage.Select_User2_image_not_loading_use();
+                    break;
+                case "User3_existing_orders_user":
+                    demoPage.Select_User3_existing_orders_user();
+                    break;
+                case "User4_fav_user":
+                    demoPage.Select_User4_fav_user();
+                    break;
+                case "User5_existing_orders_user":
+                    demoPage.Select_User5_existing_orders_user();
+                    break;
+                default:
+                    throw new IllegalArgumentException("Invalid user: " + user);
+            }
+        }
+
+
+        @When("I select the valid password")
+        public void i_select_the_valid_password() {
+            demoPage.clickPasswordValid();
         }
 
 

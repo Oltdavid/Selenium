@@ -95,7 +95,24 @@ public class DemoPage {
     @FindBy(xpath = "//*[@id=\"postCodeInput\"]")
     private WebElement postalCodeShippingAddress;
 
+    @FindBy(xpath = "//*[@id='checkout-app']/div/div/aside/article/section[2]/div/div/span[2]/span")
+    private WebElement totalCheckoutPrice;
 
+    @FindBy(xpath = "//*[@id=\"checkout-shipping-continue\"]")
+    private WebElement submitButton;
+
+    @FindBy(xpath = "//*[@id=\"confirmation-message\"]")
+    private WebElement confirmationMessage;
+
+    @FindBy(xpath = "//*[@id='__next']/div/div/div[2]/div[2]/div[3]/div[2]/p")
+    private WebElement totalPrice;
+
+
+
+
+    public String getTotalPrice() {
+        return totalPrice.getText();
+    }
 
 
     public DemoPage(WebDriver driver) {
@@ -136,6 +153,10 @@ public class DemoPage {
         return cartPrice.getText();
     }
 
+    public String getConfirmationMessage() {
+        return confirmationMessage.getText();
+    }
+
     public void clickOnePlusPhoneVendor() {
         phoneVendorOnePlus.click();
     }
@@ -147,6 +168,10 @@ public class DemoPage {
 
     public void clickPasswordValid() {
         SelectPassword.click();
+    }
+
+    public void clickSubmitButton() {
+        submitButton.click();
     }
 
 
@@ -227,6 +252,10 @@ public class DemoPage {
 
     public void typePostalCodeShippingAddress(String postalCode) {
         postalCodeShippingAddress.sendKeys(postalCode);
+    }
+
+    public String getTotalCheckoutPrice() {
+        return totalCheckoutPrice.getText();
     }
 }
 

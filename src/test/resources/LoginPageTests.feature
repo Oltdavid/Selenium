@@ -22,14 +22,18 @@ Feature: Test Demo Page
 
   Scenario Outline: Login with "<user>"
     Given I have opened the browser and navigated to the StackDemo login page
-    When I login with username "<user>" and password "<password>"
+    When I click on the username dropdown
+    When I select the username "<user>"
+    And I click on the password dropdown
+    And I select the valid password
+    And I click on the Login button
     Then The "<expected_username>" should be displayed
 
     Examples:
-      | user                        | password       | expected_username             |
-      | "User1_demouser"            | "testingisfun99" | "demouser"                   |
-      | "User2_image_not_loading_user" | "testingisfun99" | "image_not_loading_user"     |
-      | "User3_existing_orders_user"   | "testingisfun99" | "existing_orders_user"       |
-      | "User4_fav_user"               | "testingisfun99" | "fav_user"                   |
-      | "User5_existing_orders_user"   | "testingisfun99" | "Your account has been locked." |
+      | user                              | expected_username             |
+      | User1_demouser                    | demouser                      |
+      | User2_image_not_loading_user      | image_not_loading_user        |
+      | User3_existing_orders_user        | existing_orders_user          |
+      | User4_fav_user                    | fav_user                      |
+      | User5_existing_orders_user        | Your account has been locked. |
 
