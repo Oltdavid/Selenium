@@ -16,12 +16,17 @@ public class TestDemoPage {
     public WebDriver driver;
     private DemoPage demoPage;
 
+
+
+
     @BeforeMethod
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", "C://dev//files//chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+
         demoPage = new DemoPage(driver);
         demoPage.openPage();
         demoPage.clickOnSignInButton();
