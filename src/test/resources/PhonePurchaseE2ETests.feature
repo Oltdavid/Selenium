@@ -1,3 +1,4 @@
+@UITest
 Feature: Phone Purchase E2E Tests
 
   Scenario: Login with valid username and password

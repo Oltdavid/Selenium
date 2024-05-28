@@ -18,16 +18,16 @@ public class Hooks {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
-    @Before
+    @Before("@UITest")
     public void setUp() {
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
     }
 
-    /*@After
+    @After("@UITest")
     public void tearDown() {
         if(driver != null) {
             driver.quit();
         }
-    }*/
+    }
 }

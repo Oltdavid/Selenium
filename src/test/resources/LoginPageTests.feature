@@ -1,3 +1,4 @@
+@UITest
 Feature: Test Demo Page
 
   Scenario: Login with invalid password

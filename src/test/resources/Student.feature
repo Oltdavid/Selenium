@@ -1,3 +1,4 @@
+@APITest
 Feature: API testing for Student Service
 
   Scenario: Get all students
