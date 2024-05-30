@@ -4,8 +4,7 @@ import static org.testng.Assert.assertTrue;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -130,17 +129,17 @@ public class TestDemoPage {
         demoPage.clickPasswordDropdown();
         demoPage.clickPasswordValid();
         demoPage.clickLoginButton();
-        String expectedErrorMessage = "Your account has been locked.";
+        String expectedErrorMessage = "Your account has been locked1.";
         String actualErrorMessage = demoPage.getCurrentErrorMessage();
         Assert.assertEquals(expectedErrorMessage, actualErrorMessage, "The error message is not as expected");
 
     }
 
 
-   /*  @AfterMethod
+     @AfterMethod
     public void tearDown() {
         if (driver != null) {
             driver.quit();
         }
-    }*/
+    }
 }
