@@ -1,13 +1,24 @@
 package org.example;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
+public class LoginPage extends BasePage {
 
-    private WebDriver driver;
+    public LoginPage(WebDriver driver) {
+        super(driver);
+        this.driver = driver;
+        this.actions = new Actions(driver);
+        PageFactory.initElements(driver, this);
+    }
+
+    public void openPage() {
+        driver.get("https://www.bstackdemo.com/");
+    }
 
     @FindBy(xpath = "//*[@id='signin']")
     private WebElement signInButton;
@@ -15,8 +26,13 @@ public class LoginPage {
     @FindBy(xpath = "//*[@id='login-btn']")
     private WebElement loginButton;
 
+    @FindBy(xpath = "//*[@id='logout']")
+    private WebElement logoutButton;
+
+
     @FindBy(xpath = "//*[@id='username']/div/div[1]/div[1]")
     private WebElement usernameDropdown;
+
 
     @FindBy(xpath = "//*[@id='password']/div/div[1]/div[1]")
     private WebElement passwordDropdown;
@@ -30,6 +46,8 @@ public class LoginPage {
 
     @FindBy(xpath = "//*[@id='username']/div/div[1]/div[1]")
     private WebElement demoUser;
+
+
 
     @FindBy(xpath = "//*[@id=\"react-select-2-option-0-0\"]")
     private WebElement User1_demouser;
@@ -54,10 +72,16 @@ public class LoginPage {
     private WebElement errorMessage;
 
 
-    public LoginPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+    //  WebElements ...
+
+    public void clickPasswordDropdown() {
+        passwordDropdown.click();
     }
+
+    public void clickPasswordValid() {
+        SelectPassword.click();
+    }
+
 
     public void openLoginPage() {
         driver.get("https://www.bstackdemo.com/");
@@ -85,10 +109,66 @@ public class LoginPage {
         this.clickLoginButton();
     }
 
-    public void clickOnSignInButton() {
-        signInButton.click();
+
+
+    public void clickLogoutButton() {
+        logoutButton.click();
     }
 
+    public void clickUsernameDropdown() {
+        usernameDropdown.click();
+    }
+
+    public void Select_User1_demouser() {
+        User1_demouser.click();
+    }
+
+    public void Select_User2_image_not_loading_use() {
+        User2_image_not_loading_user.click();
+    }
+
+    public void Select_User3_existing_orders_user() {
+        User3_existing_orders_user.click();
+    }
+
+    public void Select_User4_fav_user() {
+        User4_fav_user.click();
+    }
+
+    public void Select_User5_existing_orders_user() {
+        User5_locked_user.click();
+    }
+
+
+    public String getErrorMessage() {
+        return errorMessage.getText();
+    }
+
+    public boolean isLogoutButtonDisplayed() {
+        return logoutButton.isDisplayed();
+    }
+
+    public String getTitle() {
+        return driver.getTitle();
+    }
+
+    public String getCurrentUsername() {
+        return currentUsername.getText();
+    }
+
+    public String getCurrentErrorMessage() {
+        return errorMessage.getText();
+    }
+
+    public void selectUsername(String username) {
+        usernameDropdown.click();
+        driver.findElement(By.xpath(String.format("//*[@id=\"react-select-2-option-0-%s\"]", username))).click();
+    }
+
+    public void selectPassword(String password) {
+        passwordDropdown.click();
+        driver.findElement(By.xpath(String.format("//*[@id=\"react-select-3-option-0-%s\"]", password))).click();
+    }
 
 
 }

@@ -15,6 +15,8 @@ public class CartPage {
     @FindBy(xpath = "//*[@id=\"__next\"]/div/div/div[2]/div[2]/div[3]/div[3]")
     private WebElement checkOutButton;
 
+
+
     public CartPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -27,4 +29,7 @@ public class CartPage {
     public void clickCheckoutButton() {
         checkOutButton.click();
     }
+
+
+
 }

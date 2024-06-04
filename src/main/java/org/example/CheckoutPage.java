@@ -30,6 +30,15 @@ public class CheckoutPage {
     @FindBy(xpath = "//*[@id=\"checkout-shipping-continue\"]")
     private WebElement submitButton;
 
+    @FindBy(xpath = "//*[@id=\"confirmation-message\"]")
+    private WebElement confirmationMessage;
+
+    @FindBy(xpath = "//*[@id='__next']/div/div/div[2]/div[2]/div[3]/div[2]/p")
+    private WebElement totalPrice;
+
+
+
+
     public CheckoutPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -62,4 +71,16 @@ public class CheckoutPage {
     public void clickSubmitButton() {
         submitButton.click();
     }
+
+    public String getConfirmationMessage() {
+        return confirmationMessage.getText();
+    }
+
+    public String getTotalPrice() {
+        return totalPrice.getText();
+    }
+
+
+
+
 }

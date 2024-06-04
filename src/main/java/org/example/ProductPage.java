@@ -16,10 +16,13 @@ public class ProductPage {
     private WebElement addToCartOnePlus7Button;
 
 
+
+
     public ProductPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
 
     public void clickOnePlusPhoneVendor() {
         phoneVendorOnePlus.click();

@@ -1,11 +1,14 @@
 package org.example;
 
+import static org.testng.AssertJUnit.assertNotNull;
+
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -17,7 +20,11 @@ public class Hooks {
     public static WebDriver driver;
 
     public byte[] saveScreenshot() {
-        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+        try {
+            return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to take screenshot", e);
+        }
     }
 
     @Before("@UITest")
@@ -29,9 +36,16 @@ public class Hooks {
         driver.manage().window().maximize();
     }
 
+
+
     @After("@UITest")
     public void tearDown(Scenario scenario) {
         if (scenario.isFailed()) {
+            try {
+                Thread.sleep(2000);  // wait 2 sec
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             Allure.getLifecycle().addAttachment("Screenshot", "image/png", "png", saveScreenshot());
         }
 
