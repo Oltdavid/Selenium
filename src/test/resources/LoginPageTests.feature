@@ -9,7 +9,6 @@ Feature: Test Demo Page
     And I click on the Login button
     Then I should see the error message "Invalid Password"
 
-
   Scenario: Login with valid username and password
     Given I have opened the browser and navigated to the StackDemo login page
 
