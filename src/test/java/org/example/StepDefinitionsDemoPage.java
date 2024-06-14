@@ -17,10 +17,10 @@ public class StepDefinitionsDemoPage {
     private CheckoutPage checkoutPage;
 
     public StepDefinitionsDemoPage() {
-        loginPage = new LoginPage(Hooks.driver);
-        productPage = new ProductPage(Hooks.driver);
-        cartPage = new CartPage(Hooks.driver);
-        checkoutPage = new CheckoutPage(Hooks.driver);
+        loginPage = new LoginPage(Hooks.getDriver());
+        productPage = new ProductPage(Hooks.getDriver());
+        cartPage = new CartPage(Hooks.getDriver());
+        checkoutPage = new CheckoutPage(Hooks.getDriver());
     }
 
     @Step("Open the browser and navigate to the StackDemo login page")

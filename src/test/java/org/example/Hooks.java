@@ -20,11 +20,15 @@ import io.restassured.RestAssured;
 import io.restassured.config.HttpClientConfig;
 
 public class Hooks {
-    public static WebDriver driver;
+    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+
+    public static WebDriver getDriver() {
+        return driver.get();
+    }
 
     public byte[] saveScreenshot() {
         try {
-            return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+            return ((TakesScreenshot) driver.get()).getScreenshotAs(OutputType.BYTES);
         } catch (Exception e) {
             throw new RuntimeException("Failed to take screenshot", e);
         }
@@ -36,10 +40,10 @@ public class Hooks {
                 HttpClientConfig.httpClientConfig().setParam(ClientPNames.CONN_MANAGER_TIMEOUT, 1000L));
 
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        driver.manage().deleteAllCookies();
-        driver.manage().window().maximize();
+        driver.set(new ChromeDriver());
+        driver.get().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.get().manage().deleteAllCookies();
+        driver.get().manage().window().maximize();
     }
 
 
@@ -55,8 +59,8 @@ public class Hooks {
             Allure.getLifecycle().addAttachment("Screenshot", "image/png", "png", saveScreenshot());
         }
 
-        if (driver != null) {
-            driver.quit();
+        if (driver.get() != null) {
+            driver.get().quit();
         }
     }
 }

@@ -8,7 +8,7 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
         features = "src/test/resources",
         glue = {"web.app.api", "org.example"},
-        tags = "@APITest or @UITest",
+        tags = "@UITest or @APITest",
         plugin = {
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
         }
