@@ -101,6 +101,12 @@ public class StepDefinitionsDemoPage {
         productPage.clickAddToCartButtonOnePlus7T();
     }
 
+    @Step("Click on the add to cart button")
+    @When("I click on the the iPhone12 to add to cart button")
+    public void i_click_on_the_iphone12_to_add_to_cart_button() {
+        productPage.clickAddToCartButton_the_iPhone12();
+    }
+
     @Step("Click on the checkout button")
     @When("I click on the checkout button")
     public void i_click_on_the_checkout_button() {
@@ -179,6 +185,12 @@ public class StepDefinitionsDemoPage {
     @When("I select the valid password")
     public void i_select_the_valid_password() {
         loginPage.clickPasswordValid();
+    }
+
+    @Step("Click on the Apple phone Vendor button")
+    @When("I click on the Apple phone Vendor button")
+    public void i_click_on_the_apple_phone_vendor_button() {
+        productPage.clickAppleVendor();
     }
 
 }

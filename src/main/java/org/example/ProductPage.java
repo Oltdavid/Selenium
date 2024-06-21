@@ -15,6 +15,12 @@ public class ProductPage {
     @FindBy(xpath = "//*[@id=\"23\"]/div[4]")
     private WebElement addToCartOnePlus7Button;
 
+    @FindBy(xpath = "//*[@id=\"1\"]/div[4]")
+    private WebElement addToCartIPhone12;
+
+    @FindBy(xpath = "//*[@id=\"__next\"]/div/div/main/div[1]/div[1]/label/span")
+    private WebElement phoneVendorApple;
+
 
 
 
@@ -30,6 +36,14 @@ public class ProductPage {
 
     public void clickAddToCartButtonOnePlus7T() {
         addToCartOnePlus7Button.click();
+    }
+
+    public void clickAddToCartButton_the_iPhone12() {
+        addToCartIPhone12.click();
+    }
+
+    public void clickAppleVendor() {
+        phoneVendorApple.click();
     }
 
 

@@ -47,7 +47,6 @@ public class Hooks {
     }
 
 
-
     @After("@UITest")
     public void tearDown(Scenario scenario) {
         if (scenario.isFailed()) {
