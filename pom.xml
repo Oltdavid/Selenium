@@ -78,21 +78,13 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver -->
-    <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-chrome-driver</artifactId>
-      <version>4.19.1</version>
-    </dependency>
 
     <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
     <dependency>
       <groupId>io.github.bonigarcia</groupId>
       <artifactId>webdrivermanager</artifactId>
-      <version>5.8.0</version>
+      <version>5.9.1</version>
     </dependency>
-
-
 
     <!-- https://mvnrepository.com/artifact/io.rest-assured/json-path -->
     <dependency>
@@ -180,11 +172,14 @@
         </dependencies>
       </plugin>
 
-
-
+      <plugin>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-maven</artifactId>
+        <version>2.10.0</version>
+      </plugin>
 
     </plugins>
   </build>
 </project>
 
-    <!-- cmd> mvn clean test , allure serve allure-results -->
+    <!-- cmd> mvn clean test , allure serve allure-results, mvn allure:report, mvn allure:serve -->
