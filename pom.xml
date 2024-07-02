@@ -123,6 +123,15 @@
       <version>1.2.3</version>
     </dependency>
 
+
+    <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-rest-assured -->
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-rest-assured</artifactId>
+      <version>2.13.8</version>
+    </dependency>
+
+
   </dependencies>
 
 
@@ -182,4 +191,5 @@
   </build>
 </project>
 
-    <!-- cmd> mvn clean test , allure serve allure-results, mvn allure:report, mvn allure:serve -->
+    <!-- cmd> mvn clean test , allure serve allure-results, mvn allure:report, mvn allure:serve, java -jar jenkins.war -httpPort=9090 -->
+

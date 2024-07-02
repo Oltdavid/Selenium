@@ -66,3 +66,4 @@ public class StudentStepDefs {
         assertEquals(response.jsonPath().getString("email"), email);
     }
 }
+
