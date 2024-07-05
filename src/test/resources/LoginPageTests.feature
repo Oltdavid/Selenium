@@ -30,10 +30,10 @@ Feature: Test Demo Page
     Then The "<expected_username>" should be displayed
 
     Examples:
-      | user                              | expected_username             |
-      | User1_demouser                    | demouser                     |
-      | User2_image_not_loading_user      | image_not_loading_user        |
-      | User3_existing_orders_user        | existing_orders_user          |
-      | User4_fav_user                    | fav_user                      |
+      | user                         | expected_username      |
+      | User1_demouser               | demouser               |
+      | User2_image_not_loading_user | image_not_loading_user |
+      | User3_existing_orders_user   | existing_orders_user   |
+      | User4_fav_user               | fav_user               |
 
 

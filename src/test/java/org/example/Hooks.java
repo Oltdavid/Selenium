@@ -1,7 +1,6 @@
 package org.example;
 
 
-
 import java.util.concurrent.TimeUnit;
 
 import org.apache.http.client.params.ClientPNames;
@@ -9,8 +8,6 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -20,12 +17,16 @@ import io.restassured.RestAssured;
 import io.restassured.config.HttpClientConfig;
 
 public class Hooks {
+
+    // ThreadLocal WebDriver for thread safety.
     private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
+    // Returns the WebDriver instance.
     public static WebDriver getDriver() {
         return driver.get();
     }
 
+    // Saves a screenshot and returns it as a byte array.
     public byte[] saveScreenshot() {
         try {
             return ((TakesScreenshot) driver.get()).getScreenshotAs(OutputType.BYTES);
@@ -34,6 +35,7 @@ public class Hooks {
         }
     }
 
+    // Sets up the test environment before each UI test.
     @Before("@UITest")
     public void setUp() {
         RestAssured.config = RestAssured.config().httpClient(
@@ -46,7 +48,7 @@ public class Hooks {
         driver.get().manage().window().maximize();
     }
 
-
+    // Tears down the test environment after each UI test.
     @After("@UITest")
     public void tearDown(Scenario scenario) {
         if (scenario.isFailed()) {
@@ -63,4 +65,3 @@ public class Hooks {
         }
     }
 }
-
