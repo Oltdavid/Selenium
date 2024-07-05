@@ -26,7 +26,7 @@ public class StepDefinitionsDemoPage {
     @Step("Open the browser and navigate to the StackDemo login page")
     @Given("I have opened the browser and navigated to the StackDemo login page")
     public void i_have_opened_the_browser_and_navigated_to_the_StackDemo_login_page() {
-        loginPage.openPage();
+        loginPage.openLoginPage();
         loginPage.clickSignInButton();
     }
 
@@ -70,7 +70,7 @@ public class StepDefinitionsDemoPage {
     @Step("Open the login page")
     @Given("I am on the login page")
     public void i_am_on_the_login_page() {
-        loginPage.openPage();
+        loginPage.openLoginPage();
         loginPage.clickSignInButton();
     }
 
