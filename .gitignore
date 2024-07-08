@@ -6,3 +6,5 @@ surefire-reports/
 *.swp
 .settings/
 test-output/
+allure-results
+allure-report
