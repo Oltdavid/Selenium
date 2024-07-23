@@ -77,120 +77,116 @@ public class LoginPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    // Opens the login page.
-    public void openPage() {
-        driver.get("https://www.bstackdemo.com/");
-    }
 
-    // Clicks on the password dropdown menu.
+    // Clicks on the password dropdown menu
     public void clickPasswordDropdown() {
         passwordDropdown.click();
     }
 
-    // Clicks on the valid password option.
+    // Clicks on the valid password option
     public void clickPasswordValid() {
         SelectPassword.click();
     }
 
-    // Opens the login page.
+    // Opens the login page
     public void openLoginPage() {
         driver.get("https://www.bstackdemo.com/");
     }
 
-    // Clicks on the sign in button.
+    // Clicks on the sign in button
     public void clickSignInButton() {
         signInButton.click();
     }
 
-    // Clicks on the login button.
+    // Clicks on the login button
     public void clickLoginButton() {
         loginButton.click();
     }
 
-    // Enters the given username.
+    // Enters the given username
     public void enterUsername(String username) {
         usernameDropdown.sendKeys(username);
     }
 
-    // Enters the given password.
+    // Enters the given password
     public void enterPassword(String password) {
         passwordDropdown.sendKeys(password);
     }
 
-    // Logs in with the given username and password.
+    // Logs in with the given username and password
     public void login(String username, String password) {
         this.enterUsername(username);
         this.enterPassword(password);
         this.clickLoginButton();
     }
 
-    // Clicks on the logout button.
+    // Clicks on the logout button
     public void clickLogoutButton() {
         logoutButton.click();
     }
 
-    // Clicks on the username dropdown menu.
+    // Clicks on the username dropdown menu
     public void clickUsernameDropdown() {
         usernameDropdown.click();
     }
 
-    // Selects the first demo user.
+    // Selects the first demo user
     public void Select_User1_demouser() {
         User1_demouser.click();
     }
 
-    // Selects the second demo user.
+    // Selects the second demo user
     public void Select_User2_image_not_loading_use() {
         User2_image_not_loading_user.click();
     }
 
-    // Selects the third demo user.
+    // Selects the third demo user
     public void Select_User3_existing_orders_user() {
         User3_existing_orders_user.click();
     }
 
-    // Selects the fourth demo user.
+    // Selects the fourth demo user
     public void Select_User4_fav_user() {
         User4_fav_user.click();
     }
 
-    // Selects the fifth demo user.
+    // Selects the fifth demo user
     public void Select_User5_existing_orders_user() {
         User5_locked_user.click();
     }
 
-    // Returns the error message text.
+    // Returns the error message text
     public String getErrorMessage() {
         return errorMessage.getText();
     }
 
-    // Checks if the logout button is displayed.
+    // Checks if the logout button is displayed
     public boolean isLogoutButtonDisplayed() {
         return logoutButton.isDisplayed();
     }
 
-    // Returns the title of the page.
+    // Returns the title of the page
     public String getTitle() {
         return driver.getTitle();
     }
 
-    // Returns the current username.
+    // Returns the current username
     public String getCurrentUsername() {
         return currentUsername.getText();
     }
 
-    // Returns the current error message.
+    // Returns the current error message
     public String getCurrentErrorMessage() {
         return errorMessage.getText();
     }
 
-    // Selects the given username from the dropdown menu.
+    // Selects the given username from the dropdown menu
     public void selectUsername(String username) {
         usernameDropdown.click();
         driver.findElement(By.xpath(String.format("//*[@id=\"react-select-2-option-0-%s\"]", username))).click();
     }
 
-    // Selects the given password from the dropdown menu.
+    // Selects the given password from the dropdown menu
     public void selectPassword(String password) {
         passwordDropdown.click();
         driver.findElement(By.xpath(String.format("//*[@id=\"react-select-3-option-0-%s\"]", password))).click();

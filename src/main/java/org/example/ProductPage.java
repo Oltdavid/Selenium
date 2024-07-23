@@ -9,7 +9,7 @@ public class ProductPage {
 
     private WebDriver driver;
 
-    // WebElement representing the OnePlus phone vendor.
+    // WebElement representing the OnePlus phone vendor
     @FindBy(xpath = "//*[@id=\"__next\"]/div/div/main/div[1]/div[4]/label/span")
     private WebElement phoneVendorOnePlus;
 
