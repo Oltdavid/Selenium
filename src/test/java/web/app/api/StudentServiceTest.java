@@ -3,6 +3,8 @@ package web.app.api;
 import static org.hamcrest.Matchers.equalTo;
 import org.testng.annotations.Test;
 
+import io.restassured.response.Response;
+
 
 public class StudentServiceTest {
 
@@ -11,8 +13,9 @@ public class StudentServiceTest {
     // Tests getting all students.
     @Test
     public void testGetStudents() {
-        studentService.getStudents().then().assertThat().statusCode(200);
-        studentService.getStudents().then().log().body();
+        Response response = studentService.getStudents();
+        response.then().assertThat().statusCode(200);
+        response.then().log().body();
     }
 
     // Tests getting a student by ID.

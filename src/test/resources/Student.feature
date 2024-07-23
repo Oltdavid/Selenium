@@ -25,6 +25,7 @@ Feature: API testing for Student Service
     Given the Student API is set up
     When the user updates a student with id 1 and first name as "John", last name as "Doe", email as "hs1@mail.com"
     Then the status code should be 200
+
   @DeleteStudent
   Scenario: Delete a student
     Given the Student API is set up
