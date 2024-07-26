@@ -10,15 +10,15 @@ public class StudentServiceTest {
 
     StudentService studentService = new StudentService();
 
-    // Tests getting all students.
+    // Tests getting all students
     @Test
     public void testGetStudents() {
         Response response = studentService.getStudents();
         response.then().assertThat().statusCode(200);
-        response.then().log().body();
+        response.then().log().body(); //just in one 
     }
 
-    // Tests getting a student by ID.
+    // Tests getting a student by ID
     @Test
     public void testGetStudentWithId() {
         studentService.getStudentById(1).then().assertThat()
@@ -29,7 +29,7 @@ public class StudentServiceTest {
                 .body("email", equalTo("james_smith@anywhere.school"));
     }
 
-    // Tests creating a student.
+    // Tests creating a student
     @Test
     public void testCreateStudent() {
         Student body = new Student("David", "Tester", "tester@mail.com");
@@ -40,7 +40,7 @@ public class StudentServiceTest {
                 .body("email", equalTo("tester@mail.com"));
     }
 
-    // Tests updating a student.
+    // Tests updating a student
     @Test
     public void testUpdateStudent() {
         int id = 1;
@@ -52,7 +52,7 @@ public class StudentServiceTest {
                 .body("email", equalTo("hs@mail.com"));
     }
 
-    // Tests deleting a student.
+    // Tests deleting a student
     @Test
     public void testDeleteStudent() {
         int id = 2;
