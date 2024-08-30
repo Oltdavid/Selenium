@@ -6,15 +6,14 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
-        // Path to the feature files.
         features = "src/test/resources",
-        // Package where the step definitions are located.
         glue = {"web.app.api", "org.example"},
-        // Tags to determine which scenarios to run.
         tags = "@UITest or @APITest",
-        // Plugin to generate Allure reports.
         plugin = {
-                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
+                "pretty",
+                "html:target/cucumber-reports/cucumber-html-report",
+                "json:target/cucumber-reports/cucumber.json", // open JSON riport
+                "junit:target/cucumber-reports/cucumber.xml"
         }
 )
 public class TestRunner extends AbstractTestNGCucumberTests {
