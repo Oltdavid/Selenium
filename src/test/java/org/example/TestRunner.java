@@ -12,7 +12,7 @@ import io.cucumber.testng.CucumberOptions;
         tags = "@UITest or @APITest",
         plugin = {
                 "pretty",
-                "html:target/cucumber-reports/cucumber-html-report",
+                "html:target/CucumberTestReport.html",
                 "json:target/cucumber-reports/CucumberTestReport.json", // JSON riport gen
                 "junit:target/cucumber-reports/cucumber.xml"
         }
