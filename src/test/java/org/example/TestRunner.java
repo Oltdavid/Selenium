@@ -13,7 +13,7 @@ import io.cucumber.testng.CucumberOptions;
         plugin = {
                 "pretty",
                 "html:target/cucumber-reports/cucumber-html-report",
-                "json:target/cucumber-reports/cucumber.json", // JSON riport gen
+                "json:target/cucumber-reports/CucumberTestReport.json", // JSON riport gen
                 "junit:target/cucumber-reports/cucumber.xml"
         }
 )
