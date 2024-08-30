@@ -13,7 +13,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <allure.version>2.29.0</allure.version>
-        <aspectj.version>1.9.20.1</aspectj.version>
+        <aspectj.version>1.9.22.1</aspectj.version>
     </properties>
 
     <dependencyManagement>
@@ -163,7 +163,7 @@
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
                     <systemPropertyVariables>
-                        <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
+                       <!-- <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>-->
                     </systemPropertyVariables>
                 </configuration>
                 <dependencies>
