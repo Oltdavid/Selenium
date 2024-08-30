@@ -48,16 +48,12 @@ public class Hooks {
         driver.get().manage().window().maximize();
     }
 
-    // Tears down the test environment after each UI test.
     @After("@UITest")
     public void tearDown(Scenario scenario) {
         if (scenario.isFailed()) {
-            try {
-                Thread.sleep(2000);  // wait 2 sec
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            Allure.getLifecycle().addAttachment("Screenshot", "image/png", "png", saveScreenshot());
+            // Screenshot for cucumber riport
+            final byte[] screenshot = saveScreenshot();
+            scenario.attach(screenshot, "image/png", "Screenshot on Failure");
         }
 
         if (driver.get() != null) {
