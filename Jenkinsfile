@@ -26,7 +26,7 @@ pipeline {
         stage('Allure Report') {
             steps {
                 script {
-                    def allureHome = tool 'Allure 2.29.0' // vagy a megfelelő Allure verzió
+                    def allureHome = tool 'Allure 2.29.0'
                     bat "'${allureHome}/bin/allure' generate 'target/allure-results' -o 'target/allure-report' --clean"
                 }
             }

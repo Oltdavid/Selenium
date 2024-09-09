@@ -1,6 +1,5 @@
 package org.example;
 
-
 import java.util.concurrent.TimeUnit;
 
 import org.apache.http.client.params.ClientPNames;
@@ -12,7 +11,6 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import io.qameta.allure.Allure;
 import io.restassured.RestAssured;
 import io.restassured.config.HttpClientConfig;
 
@@ -51,9 +49,9 @@ public class Hooks {
     @After("@UITest")
     public void tearDown(Scenario scenario) {
         if (scenario.isFailed()) {
-            // Screenshot for cucumber riport
+            // Screenshot for cucumber report
             final byte[] screenshot = saveScreenshot();
-            scenario.attach(screenshot, "image/png", "Screenshot on Failure");
+            scenario.attach(screenshot, "image/png", "Screenshot on Failure"); // Attach screenshot to Cucumber report
         }
 
         if (driver.get() != null) {
