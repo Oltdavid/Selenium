@@ -33,7 +33,7 @@ Feature: Test Demo Page
       | user                         | expected_username      |
       | User1_demouser               | demouser               |
       | User2_image_not_loading_user | image_not_loading_user |
-      | User3_existing_orders_user   | existing_orders_user1  |
-      | User4_fav_user               | fav_user1               |
+      | User3_existing_orders_user   | existing_orders_user  |
+      | User4_fav_user               | fav_user               |
 
 

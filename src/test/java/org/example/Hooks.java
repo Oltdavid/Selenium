@@ -1,44 +1,43 @@
 package org.example;
 
-import java.util.concurrent.TimeUnit;
-
-import org.apache.http.client.params.ClientPNames;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import io.restassured.RestAssured;
-import io.restassured.config.HttpClientConfig;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
 public class Hooks {
 
-    // ThreadLocal WebDriver for thread safety.
     private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    private static ThreadLocal<Scenario> currentScenario = new ThreadLocal<>();
 
-    // Returns the WebDriver instance.
     public static WebDriver getDriver() {
         return driver.get();
     }
 
-    // Saves a screenshot and returns it as a byte array.
-    public byte[] saveScreenshot() {
-        try {
-            return ((TakesScreenshot) driver.get()).getScreenshotAs(OutputType.BYTES);
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to take screenshot", e);
-        }
+    public static Scenario getScenario() {
+        return currentScenario.get();
     }
 
-    // Sets up the test environment before each UI test.
+    @Before
+    public void beforeScenario(Scenario scenario) {
+        currentScenario.set(scenario);
+    }
+
+    @After
+    public void afterScenario() {
+        if (driver.get() != null) {
+            driver.get().quit();
+        }
+        currentScenario.remove();
+    }
+
     @Before("@UITest")
     public void setUp() {
-        RestAssured.config = RestAssured.config().httpClient(
-                HttpClientConfig.httpClientConfig().setParam(ClientPNames.CONN_MANAGER_TIMEOUT, 1000L));
-
         WebDriverManager.chromedriver().setup();
         driver.set(new ChromeDriver());
         driver.get().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -47,15 +46,11 @@ public class Hooks {
     }
 
     @After("@UITest")
-    public void tearDown(Scenario scenario) {
-        if (scenario.isFailed()) {
-            // Screenshot for cucumber report
-            final byte[] screenshot = saveScreenshot();
-            scenario.attach(screenshot, "image/png", "Screenshot on Failure"); // Attach screenshot to Cucumber report
+    public void tearDown() {
+        if (getScenario().isFailed()) {
+            final byte[] screenshot = ((TakesScreenshot) driver.get()).getScreenshotAs(OutputType.BYTES);
+            getScenario().attach(screenshot, "image/png", "Screenshot on Failure");
         }
-
-        if (driver.get() != null) {
-            driver.get().quit();
-        }
+        driver.get().quit();
     }
 }
